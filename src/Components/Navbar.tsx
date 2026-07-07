@@ -1,66 +1,86 @@
-import { Container, Menu } from 'lucide-react';
+import { useState } from "react";
+import { TerminalSquare, Menu, X } from "lucide-react";
+
+const navItems = [
+  { href: "#Home", label: "home.tsx" },
+  { href: "#About", label: "about.tsx" },
+  { href: "#Experiences", label: "experience.tsx" },
+  { href: "#Projects", label: "projects.tsx" },
+];
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    // left-0 et right-0 forcent la barre à s'étirer sur toute la largeur de la fenêtre
-    <nav className="fixed top-0 left-0 right-0 w-full z-50 bg-slate-900/80 backdrop-blur-xl border-b border-white/5">
-      
-      {/* Ce conteneur interne centre le contenu sur les grands écrans 
-          tout en laissant la barre de navigation (le fond) s'étendre à l'infini.
-      */}
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-canvas/90 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="flex justify-between items-center h-20">
-          
-          {/* Logo & Brand */}
-          <a href="#" className="flex items-center group shrink-0">
-            <div className="bg-accent/10 p-2 rounded-xl group-hover:rotate-12 transition-transform duration-300 mr-3">
-              <Container className="w-6 h-6 text-accent" />
-            </div>
-            <span className="text-xl font-black tracking-tighter text-white">
-              MARIO <span className="text-accent italic">Open_Coding</span>
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <a href="#Home" className="flex items-center gap-3 group shrink-0">
+            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-surface border border-border text-amber group-hover:rotate-6 transition-transform duration-300">
+              <TerminalSquare className="w-4 h-4" />
+            </span>
+            <span className="font-mono-ui text-sm text-ink">
+              mario<span className="text-ink-muted">.dev</span>
             </span>
           </a>
 
-          {/* Navigation Desktop */}
-          <div className="hidden md:flex items-center space-x-8">
-            <ul className="flex items-center space-x-2">
-              <NavItem href="#Home" label="Accueil" />
-              <NavItem href="#About" label="À Propos" />
-              <NavItem href="#Experiences" label="Expériences" />
-              <NavItem href="#Projects" label="Projets" />
-            </ul>
-            
-            <a 
-              href="#Contact" 
-              className="px-6 py-2.5 bg-accent text-slate-950 font-bold rounded-xl hover:shadow-[0_0_20px_rgba(var(--accent-rgb),0.3)] transition-all active:scale-95 text-sm whitespace-nowrap"
+          {/* Desktop nav — styled like editor tabs */}
+          <div className="hidden md:flex items-center gap-1 rounded-lg border border-border bg-surface/60 p-1">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="px-4 py-2 rounded-md font-mono-ui text-xs text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          <a
+            href="#Contact"
+            className="hidden md:inline-flex items-center px-5 py-2.5 rounded-md bg-amber text-canvas font-mono-ui text-xs font-semibold hover:brightness-110 active:scale-95 transition-all whitespace-nowrap"
+          >
+            {"> contact"}
+          </a>
+
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="md:hidden p-2 text-ink hover:bg-surface rounded-md transition-colors"
+            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={open}
+          >
+            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* Mobile menu */}
+        {open && (
+          <div className="md:hidden pb-6 flex flex-col gap-1 border-t border-border pt-4 animate-[fadeIn_0.2s_ease-out]">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="px-4 py-3 rounded-md font-mono-ui text-sm text-ink-muted hover:text-ink hover:bg-surface transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+            <a
+              href="#Contact"
+              onClick={() => setOpen(false)}
+              className="mt-2 px-4 py-3 rounded-md bg-amber text-canvas font-mono-ui text-sm font-semibold text-center"
             >
-              Contact
+              {"> contact"}
             </a>
           </div>
-
-          {/* Mobile Menu Icon */}
-          <div className="md:hidden">
-            <button className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
-              <Menu className="w-6 h-6" />
-            </button>
-          </div>
-
-        </div>
+        )}
       </div>
     </nav>
   );
 };
-
-const NavItem = ({ href, label }: { href: string; label: string }) => (
-  <li>
-    <a 
-      href={href} 
-      className="relative px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors group"
-    >
-      {label}
-      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-1/2"></span>
-    </a>
-  </li>
-);
 
 export default Navbar;

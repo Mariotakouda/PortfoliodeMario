@@ -7,24 +7,14 @@ import Projects from "./Components/Projects";
 
 function App() {
   return (
-    <>
-      <div>
-        <div className="p-5 md:px-[15%]">
-          <Navbar />
-          <Home />
-        </div>
-        
-        <About />
-
-        <div className="p-5 md:px-[15%]">
-          <Experience />
-          <Projects />
-        </div>
-        <div>
-          <Footer />
-        </div>
-      </div>
-    </>
+    <div className="bg-canvas min-h-screen">
+      <Navbar />
+      <Home />
+      <About />
+      <Experience />
+      <Projects />
+      <Footer />
+    </div>
   );
 }
 

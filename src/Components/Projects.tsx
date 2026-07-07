@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
 import Title from "./Title";
 
@@ -7,12 +7,15 @@ import img2 from "/assets/projects/BIBLIO.png";
 import img3 from "/assets/projects/Cosmo.png";
 import img4 from "/assets/projects/Foot.png";
 import img5 from "/assets/projects/DIGIT.png";
+import img6 from "/assets/projects/info.png";
+import img7 from "/assets/projects/farm.png";
 
 const projects = [
   {
     id: 1,
     title: "HODO",
-    description: "Système intégré de gestion des ressources humaines (SIRH) permettant le suivi des employés et des performances.",
+    description:
+      "Système intégré de gestion des ressources humaines (SIRH) permettant le suivi des employés et des performances.",
     technologies: ["React", "Laravel", "MySQL"],
     demoLink: "#",
     repoLink: "#",
@@ -21,7 +24,8 @@ const projects = [
   {
     id: 2,
     title: "BOOKHOUSE",
-    description: "Bibliothèque numérique moderne permettant la gestion et la consultation d'ouvrages en ligne.",
+    description:
+      "Bibliothèque numérique moderne permettant la gestion et la consultation d'ouvrages en ligne.",
     technologies: ["PHP", "Laravel", "Tailwind"],
     demoLink: "#",
     repoLink: "#",
@@ -39,7 +43,8 @@ const projects = [
   {
     id: 4,
     title: "VIVA_FOOT",
-    description: "Application de suivi sportif avec une interface utilisateur immersive pour les fans de football.",
+    description:
+      "Application de suivi sportif avec une interface utilisateur immersive pour les fans de football.",
     technologies: ["PHP", "Laravel", "Blade"],
     demoLink: "#",
     repoLink: "#",
@@ -54,78 +59,101 @@ const projects = [
     repoLink: "#",
     image: img5,
   },
+  {
+    id: 6,
+    title: "InfoJob",
+    description:
+      "Application centralisant la gestion des démarches administratives et la mise en relation entre l'offre et la demande d'emploi.",
+    technologies: ["Wordpress", "Elementor"],
+    demoLink: "#",
+    repoLink: "#",
+    image: img6,
+  },
+  {
+    id: 7,
+    title: "Farm_Track",
+    description: "Conception d'un ERP Odoo dédié à la gestion d'une exploitation agricole et d'élevage.",
+    technologies: ["Odoo"],
+    demoLink: "#",
+    repoLink: "#",
+    image: img7,
+  },
 ];
 
 const Projects = () => {
   return (
-    <section className="bg-slate-950 w-full py-24" id="Projects">
-      <div className="w-full px-6 md:px-16 lg:px-24">
-        
-        <motion.div 
+    <section className="w-full py-24" id="Projects">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-14"
         >
-          <Title title="Projets Récents" />
+          <Title eyebrow="projets" title="Projets récents" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-slate-900/50 border border-white/5 rounded-[2.5rem] overflow-hidden backdrop-blur-sm hover:border-blue-500/30 transition-all duration-500"
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="group relative bg-surface border border-border rounded-2xl overflow-hidden hover:border-amber/30 transition-colors duration-500"
             >
-              {/* Conteneur Image avec Zoom */}
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-56 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-canvas via-transparent to-transparent opacity-70" />
               </div>
 
-              {/* Contenu de la carte */}
-              <div className="p-8">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-black text-white group-hover:text-blue-400 transition-colors">
+              <div className="p-6 md:p-7">
+                <div className="flex justify-between items-start mb-3">
+                  <h3 className="text-xl font-display font-bold text-ink group-hover:text-amber transition-colors">
                     {project.title}
                   </h3>
-                  <div className="flex gap-3">
-                    <a href={project.repoLink} className="text-slate-400 hover:text-white transition-colors">
+                  <div className="flex gap-3 shrink-0 ml-3">
+                    <a
+                      href={project.repoLink}
+                      className="text-ink-muted hover:text-ink transition-colors"
+                      aria-label={`Code source de ${project.title}`}
+                    >
                       <Github className="w-5 h-5" />
                     </a>
-                    <a href={project.demoLink} className="text-slate-400 hover:text-white transition-colors">
+                    <a
+                      href={project.demoLink}
+                      className="text-ink-muted hover:text-ink transition-colors"
+                      aria-label={`Démo de ${project.title}`}
+                    >
                       <ExternalLink className="w-5 h-5" />
                     </a>
                   </div>
                 </div>
 
-                <p className="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-2">
+                <p className="text-ink-muted text-sm leading-relaxed mb-5 line-clamp-2">
                   {project.description}
                 </p>
 
-                {/* Badges Technologies */}
-                <div className="flex flex-wrap gap-2 mb-8">
+                <div className="flex flex-wrap gap-2 mb-7">
                   {project.technologies.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 text-[10px] font-bold text-blue-400 bg-blue-500/10 border border-blue-500/20 rounded-full uppercase tracking-widest"
+                      className="px-3 py-1 font-mono-ui text-[10px] text-amber bg-amber/10 border border-amber/20 rounded-full uppercase tracking-widest"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Bouton Voir le Projet */}
                 <a
                   href={project.demoLink}
-                  className="inline-flex items-center justify-center w-full py-4 bg-slate-800 text-white font-bold rounded-2xl group-hover:bg-blue-600 transition-all duration-300"
+                  className="inline-flex items-center justify-center w-full py-3.5 bg-surface-2 text-ink font-mono-ui text-sm font-semibold rounded-xl group-hover:bg-amber group-hover:text-canvas transition-all duration-300"
                 >
                   Voir les détails
                 </a>

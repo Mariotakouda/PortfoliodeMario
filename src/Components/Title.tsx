@@ -1,14 +1,22 @@
 interface TitleProps {
-  title: string
-  
+  eyebrow: string;
+  title: string;
+  align?: "left" | "center";
 }
-const Title = ({ title }: TitleProps) => {
+
+const Title = ({ eyebrow, title, align = "left" }: TitleProps) => {
+  const isCenter = align === "center";
   return (
-    <h1 className="uppercase text-blue-600  font-bold mb-5 text-center  text-3xl">
+    <div className={isCenter ? "text-center" : "text-left"}>
+      <span className="font-mono-ui text-xs md:text-sm text-mint tracking-wide">
+        {`// ${eyebrow}`}
+      </span>
+      <h2 className="font-display text-3xl md:text-5xl font-bold text-ink mt-2 tracking-tight">
         {title}
-    </h1>
-  )
+      </h2>
+      <div className={`mt-5 h-px w-16 bg-border ${isCenter ? "mx-auto" : ""}`} />
+    </div>
+  );
 };
 
-export default Title
-    
+export default Title;

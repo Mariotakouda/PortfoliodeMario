@@ -1,71 +1,67 @@
-import { Terminal, Twitter, Youtube, Facebook, Linkedin } from "lucide-react";
+import { TerminalSquare, Linkedin, Mail, MessageCircle } from "lucide-react";
+
+const socialLinks = [
+  { Icon: Linkedin, link: "http://linkedin.com/in/mario-takouda-722b87352", label: "LinkedIn" },
+  { Icon: Mail, link: "mailto:mariotakouda99@gmail.com", label: "Email" },
+  { Icon: MessageCircle, link: "https://wa.me/22890123456", label: "WhatsApp" },
+];
 
 const Footer = () => {
-  // On stocke le composant lui-même, pas le JSX
-  const socialLinks = [
-    { Icon: Twitter, link: "https://twitter.com" },
-    { Icon: Youtube, link: "https://youtube.com" },
-    { Icon: Facebook, link: "https://facebook.com" },
-    { Icon: Linkedin, link: "https://linkedin.com" }
-  ];
-
   return (
-    <footer className="w-full bg-slate-950 border-t border-white/5 pt-16 pb-8" id="Footer">
-      <div className="w-full px-6 md:px-16 lg:px-24">
-        
+    <footer className="w-full border-t border-border pt-16 pb-8" id="Contact">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-10 mb-12">
-          
           {/* Branding */}
           <div className="flex flex-col items-center md:items-start">
             <div className="flex items-center gap-3 mb-4 group cursor-default">
-              <div className="p-2 bg-blue-600 rounded-lg group-hover:rotate-12 transition-transform duration-300">
-                <Terminal className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-black text-white tracking-tighter">
-                MARIO <span className="text-blue-500">CODE_NOW</span>
+              <span className="flex h-9 w-9 items-center justify-center rounded-md bg-surface border border-border text-amber group-hover:rotate-6 transition-transform duration-300">
+                <TerminalSquare className="w-4 h-4" />
+              </span>
+              <span className="font-mono-ui text-sm text-ink">
+                mario<span className="text-ink-muted">.dev</span>
               </span>
             </div>
-            <p className="text-slate-500 text-sm max-w-xs text-center md:text-left leading-relaxed">
-              Développeur Fullstack passionné par la création d'expériences numériques d'exception.
+            <p className="text-ink-muted text-sm max-w-xs text-center md:text-left leading-relaxed">
+              Développeur Fullstack basé à Lomé, passionné par la création de
+              produits numériques robustes et bien conçus.
             </p>
           </div>
 
           {/* Navigation */}
-          <nav className="flex flex-wrap justify-center gap-8 text-sm font-bold text-slate-400 uppercase tracking-widest">
-            <a href="#Home" className="hover:text-blue-500 transition-colors">Accueil</a>
-            <a href="#About" className="hover:text-blue-500 transition-colors">À Propos</a>
-            <a href="#Projects" className="hover:text-blue-500 transition-colors">Projets</a>
-            <a href="#Experiences" className="hover:text-blue-500 transition-colors">Parcours</a>
+          <nav className="flex flex-wrap justify-center gap-6 font-mono-ui text-xs text-ink-muted uppercase tracking-widest">
+            <a href="#Home" className="hover:text-amber transition-colors">Accueil</a>
+            <a href="#About" className="hover:text-amber transition-colors">À propos</a>
+            <a href="#Experiences" className="hover:text-amber transition-colors">Parcours</a>
+            <a href="#Projects" className="hover:text-amber transition-colors">Projets</a>
           </nav>
 
-          {/* Réseaux Sociaux (Correction TypeScript ici) */}
-          <div className="flex gap-5">
-            {socialLinks.map((social, index) => (
-              <a 
-                key={index}
-                href={social.link} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-slate-900 border border-white/5 rounded-full text-slate-400 hover:text-white hover:bg-blue-600 hover:border-blue-600 transition-all duration-300"
+          {/* Social */}
+          <div className="flex gap-4">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.link}
+                target={social.link.startsWith("http") ? "_blank" : undefined}
+                rel={social.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                aria-label={social.label}
+                className="w-10 h-10 flex items-center justify-center bg-surface border border-border rounded-full text-ink-muted hover:text-canvas hover:bg-amber hover:border-amber transition-all duration-300"
               >
-                {/* On appelle le composant directement avec ses props */}
-                <social.Icon className="w-5 h-5" />
+                <social.Icon className="w-4 h-4" />
               </a>
             ))}
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-600 text-xs font-medium uppercase tracking-widest">
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-ink-muted/70 font-mono-ui text-[11px] uppercase tracking-widest">
             © {new Date().getFullYear()} — Mario Takouda. Tous droits réservés.
           </p>
-          <div className="flex items-center gap-2 text-slate-600 text-xs font-medium">
-            <span className="w-1 h-1 bg-emerald-500 rounded-full animate-pulse"></span>
-            Fait avec passion au Togo
+          <div className="flex items-center gap-2 text-ink-muted/70 font-mono-ui text-[11px]">
+            <span className="w-1.5 h-1.5 bg-mint rounded-full animate-pulse" />
+            Fait avec soin au Togo
           </div>
         </div>
-
       </div>
     </footer>
   );
