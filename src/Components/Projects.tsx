@@ -5,7 +5,6 @@ import Title from "./Title";
 import img1 from "/assets/projects/HODO.png";
 import img2 from "/assets/projects/BIBLIO.png";
 import img3 from "/assets/projects/Cosmo.png";
-import img4 from "/assets/projects/Foot.png";
 import img5 from "/assets/projects/DIGIT.png";
 import img6 from "/assets/projects/info.png";
 import img7 from "/assets/projects/farm.png";
@@ -16,7 +15,7 @@ const projects = [
     title: "HODO",
     description:
       "Système intégré de gestion des ressources humaines (SIRH) permettant le suivi des employés et des performances.",
-    technologies: ["React", "Laravel", "MySQL"],
+    technologies: ["ReactTS", "Laravel", "MySQL"],
     demoLink: "#",
     repoLink: "#",
     image: img1,
@@ -40,16 +39,16 @@ const projects = [
     repoLink: "#",
     image: img3,
   },
-  {
-    id: 4,
-    title: "VIVA_FOOT",
-    description:
-      "Application de suivi sportif avec une interface utilisateur immersive pour les fans de football.",
-    technologies: ["PHP", "Laravel", "Blade"],
-    demoLink: "#",
-    repoLink: "#",
-    image: img4,
-  },
+  // {
+  //   id: 4,
+  //   title: "VIVA_FOOT",
+  //   description:
+  //     "Application de suivi sportif avec une interface utilisateur immersive pour les fans de football.",
+  //   technologies: ["PHP", "Laravel", "Blade"],
+  //   demoLink: "#",
+  //   repoLink: "#",
+  //   image: img4,
+  // },
   {
     id: 5,
     title: "DigitHouse",
@@ -64,9 +63,9 @@ const projects = [
     title: "InfoJob",
     description:
       "Application centralisant la gestion des démarches administratives et la mise en relation entre l'offre et la demande d'emploi.",
-    technologies: ["Wordpress", "Elementor"],
-    demoLink: "#",
-    repoLink: "#",
+    technologies: ["Laravel"],
+    demoLink: "https://togoinfo.onrender.com",
+    repoLink: "https://github.com/Mariotakouda/infojob.git",
     image: img6,
   },
   {
