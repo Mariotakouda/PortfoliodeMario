@@ -16,7 +16,7 @@ const projects = [
     description:
       "Système intégré de gestion des ressources humaines (SIRH) permettant le suivi des employés et des performances.",
     technologies: ["ReactTS", "Laravel", "MySQL"],
-    demoLink: "#",
+    demoLink: "https://heteromorphic-peg-undemanded.ngrok-free.dev/",
     repoLink: "#",
     image: img1,
   },
