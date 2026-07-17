@@ -20,6 +20,28 @@ const projects = [
     repoLink: "#",
     image: img1,
   },
+
+  {
+    id: 6,
+    title: "InfoJob",
+    description:
+      "Application centralisant la gestion des démarches administratives et la mise en relation entre l'offre et la demande d'emploi.",
+    technologies: ["Laravel"],
+    demoLink: "https://togoinfo.onrender.com",
+    repoLink: "https://github.com/Mariotakouda/infojob.git",
+    image: img6,
+  },
+
+  {
+    id: 7,
+    title: "Farm_Track",
+    description: "Conception d'un ERP Odoo dédié à la gestion d'une exploitation agricole et d'élevage.",
+    technologies: ["Odoo"],
+    demoLink: "#",
+    repoLink: "#",
+    image: img7,
+  },
+
   {
     id: 2,
     title: "BOOKHOUSE",
@@ -57,25 +79,6 @@ const projects = [
     demoLink: "#",
     repoLink: "#",
     image: img5,
-  },
-  {
-    id: 6,
-    title: "InfoJob",
-    description:
-      "Application centralisant la gestion des démarches administratives et la mise en relation entre l'offre et la demande d'emploi.",
-    technologies: ["Laravel"],
-    demoLink: "https://togoinfo.onrender.com",
-    repoLink: "https://github.com/Mariotakouda/infojob.git",
-    image: img6,
-  },
-  {
-    id: 7,
-    title: "Farm_Track",
-    description: "Conception d'un ERP Odoo dédié à la gestion d'une exploitation agricole et d'élevage.",
-    technologies: ["Odoo"],
-    demoLink: "#",
-    repoLink: "#",
-    image: img7,
   },
 ];
 
